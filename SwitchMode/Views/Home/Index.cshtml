@@ -1,0 +1,13 @@
+﻿@model Model
+
+@foreach (var day in Model.Days)
+{
+    <div id="container-for-@day.Iso8601Date" data-day data-url="@Url.Action("_OneDay", new{day.Date})">
+        @Html.Partial("_OneDay", day)
+    </div>
+}
+
+@section scripts
+{
+    <script src="~/Scripts/Site.js"></script>
+}

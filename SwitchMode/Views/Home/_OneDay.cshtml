@@ -1,0 +1,54 @@
+﻿@model Day
+
+<h3>
+    <span>Data for @($"{Model.Date:dd/MM/yyyy}")</span>
+    <span class="pull-right">
+        <span style="margin-top: -10px;">Hide Posted Data?</span>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+    </span>
+</h3>
+
+@{
+    var tableId = $"table-for-{Model.Iso8601Date}";
+}
+
+<table id="@tableId" class="table table-bordered table-condensed table-striped" data-show-posted="true">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Value</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var value in Model.Values)
+        {
+            var displayClass = value.Posted ? "text-primary" : string.Empty;
+
+            <tr class="@displayClass" @Posted(value)>
+                <td class="col-md-7">@value.Description</td>
+                <td class="col-md-4">@value.ActualValue</td>
+                <td class="col-md-1 text-center">
+                    @if (!value.Posted)
+                    {
+                        <button class="btn btn-xs btn-success" data-save-button>
+                            <i class="fa fa-save"></i>&nbsp;&nbsp;Save
+                        </button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+@helper Posted(Value value)
+{
+    if (value.Posted)
+    {
+        @:data-posted
+    }
+}
