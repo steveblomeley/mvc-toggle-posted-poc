@@ -15,7 +15,7 @@
     var tableId = $"table-for-{Model.Iso8601Date}";
 }
 
-<table id="@tableId" class="table table-bordered table-condensed table-striped" data-show-posted="true">
+<table id="@tableId" class="table table-bordered table-condensed" data-show-posted="true">
     <thead>
         <tr>
             <th>Description</th>
@@ -26,7 +26,7 @@
     <tbody>
         @foreach (var value in Model.Values)
         {
-            var displayClass = value.Posted ? "text-primary" : string.Empty;
+            var displayClass = value.Posted ? "posted" : string.Empty;
 
             <tr class="@displayClass" @Posted(value)>
                 <td class="col-md-7">@value.Description</td>

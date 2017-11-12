@@ -39,7 +39,7 @@
     function saveAndDisplay(button) {
         $(button)
             .closest("tr")
-            .addClass("text-primary")
+            .addClass("posted")
             .attr("data-posted", "");
         $(button)
             .remove();

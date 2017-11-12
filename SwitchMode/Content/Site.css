@@ -81,3 +81,8 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+tr.posted {
+    color: #2196f3;
+    background-color: #e9e9e9;
+}
